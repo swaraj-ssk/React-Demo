@@ -5,10 +5,12 @@ export default function TextForm(props) {
 
     const toUpper = () => {
         setText(text.toUpperCase());
+        props.showAlert("Converted to UpperCase!", "success");
     }
 
     const toLower = () => {
         setText(text.toLowerCase());
+        props.showAlert("Converted to LowerCase!", "success");
     }
     
     const handleOnChange = (event) => {
