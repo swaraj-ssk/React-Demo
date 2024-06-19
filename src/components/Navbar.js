@@ -2,38 +2,42 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 export default function Navbar(props) {
-  return (
-    <div>
-      <nav class="navbar navbar-expand-lg bg-body-tertiary">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="/">{props.text}</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="/">Home</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/">About</a>
-              </li>
-            </ul>
-          </div>
+    return (
+        <div>
+            <nav className={`navbar bg-${props.mode} navbar-expand-lg bg-body-tertiary `} data-bs-theme={props.mode}>
+                <div className="container-fluid">
+                    <a className="navbar-brand" href="/">{props.text}</a>
+                    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span className="navbar-toggler-icon"></span>
+                    </button>
+                    <div className="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li className="nav-item">
+                                <a className="nav-link active" aria-current="page" href="/">Home</a>
+                            </li>
+                            <li className= "nav-item">
+                                <a className="nav-link" href="/">About</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div className={`form-check form-switch text-${props.mode==='dark'?'light':'dark'}`}>
+                        <input className="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" onChange={props.toggleMode} />
+                        <label className="form-check-label" htmlFor="flexSwitchCheckDefault">Enable DarkMode</label>
+                    </div>
+                </div>
+            </nav>
         </div>
-      </nav>
-    </div>
-  )
+    )
 }
 
 Navbar.propTypes = {
     title: PropTypes.string.isRequired,
     aboutText: PropTypes.string
-  }
-  // means title must be of type string, we can not send number.
-  //Also is must not be undefined as it is Required
-  
+}
+// means title must be of type string, we can not send number.
+//Also is must not be undefined as it is Required
+
 Navbar.defaultProps = {
     title: 'title here',
-    aboutText:'About'
+    aboutText: 'About'
 };
